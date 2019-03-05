@@ -1,0 +1,90 @@
+﻿@model FileGenerator.Domain.Entities.StructField
+    @using FileGenerator.Domain.Entities
+
+@using (Html.BeginForm("Create", "Fieldstruct", FormMethod.Post, new { id = "form-fielstruct" }))
+{
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+
+                <h4>
+                    CREATE FIELD-STRUCT
+                </h4>
+
+
+            </div>
+
+            <div class="modal-body" id="FSmsgBody">
+                <div class="card">
+
+                    <div class="body">
+                        <div class="row clearfix">
+                            <div class="col-sm-12">
+                                <div style="display:none;">
+
+                                    @Html.EditorFor(m => m.ID);
+
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(m => m.StructID)
+                                        @Html.DropDownListFor(m => m.StructID, new SelectList((IEnumerable<Struct>)ViewBag.StructName, "ID", "St_Name"), "Select a Struct", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.StructID)
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="form-line">
+                                        @Html.LabelFor(m => m.FieldID)
+                                        @Html.DropDownListFor(m => m.FieldID, new SelectList((IEnumerable<Field>)ViewBag.FieldName, "ID", "Field_Name"), "Select a Field", new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.FieldID)
+                                    </div>
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+                                        @Html.LabelFor(m => m.Field_Order)
+                                        @Html.EditorFor(m => m.Field_Order, new { htmlAttributes = new { @class = "form-control" } })
+
+                                    </div>
+                                    @Html.ValidationMessageFor(m => m.Field_Order)
+                                </div>
+                                <div class="form-group form-float">
+                                    <div class="form-line">
+
+
+                                        <input name="Required" id="Required" type="checkbox" value="true" data-val-required="The field is required." data-val="true" class="form-control " @if (Model.Required) { @Html.Raw("checked") ; }><label for="Required">Required?</label>
+                                        <input name="Required" type="hidden" value="false">
+
+                                    </div>
+
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-success waves-effect">
+                    <i class="material-icons">done</i>
+                    <span>SAVE CHANGES</span>
+                </button>
+                <button type="button" class="btn bg-red waves-effect" data-dismiss="modal">
+                    <i class="material-icons">clear</i>
+                    <span>CLOSE</span>
+                </button>
+
+            </div>
+
+
+
+        </div>
+    </div>
+}
+

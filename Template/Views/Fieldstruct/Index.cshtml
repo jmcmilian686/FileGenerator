@@ -1,0 +1,64 @@
+﻿
+@model IEnumerable<FileGenerator.Domain.Entities.StructField>
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row" id="fstTabDetails">
+
+    @{
+        Html.RenderAction("Details");
+    }
+</div>
+
+<!--Modal Area-->
+<!-- Large Size-->
+<div class="modal fade" id="FSModal" tabindex="-1" role="dialog">
+    @{
+
+        Html.RenderAction("Create");
+
+    }
+
+    
+</div>
+<!--Normal Size-->
+
+<div class="modal fade" id="defaultModalFS" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Message</h4>
+            </div>
+            <div class="modal-body" id="updAreaFS">
+                Do you want to delete the selected Item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="delFinalFS" class="btn bg-red btn-link waves-effect" data-color="red">DELETE</button>
+                <button type="button" id="clModalFS" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Modal Area-->
+
+@section scripts{
+
+    <script src="/Template/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="/Template/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+
+    <!-- Custom Js -->
+
+    <script src="/Template/js/pages/tables/jquery-datatable.js"></script>
+    <script src="/Template/js/admin.js"></script>
+    <!-- Demo Js -->
+    <script src="/Template/js/demo.js"></script>
+}
+

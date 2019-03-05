@@ -1,0 +1,148 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using FileGenerator.Domain.Entities
+
+        <div class="row">
+
+            <div class="col-md-12" id="header">
+                <div class="card">
+
+                    @using (Html.BeginForm("Create", "Genfile", FormMethod.Post, new { id = "form-genfile" }))
+                    {
+                    <div class="header">
+                        <div class="col-xs-5 pull-left">
+                            <h2>
+                                Generate File
+                            </h2>
+                        </div>
+
+                        <button type="submit" class="btn_plus btn btn-success waves-effect pull-right" >
+                            <i class="material-icons">add</i>
+                        </button>
+
+                    </div>
+                    <div class="body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <div class="form-line">
+
+                                        @Html.DropDownList("Document", new SelectList((IEnumerable<LFile>)ViewBag.Document, "LFile_ID", "Doc_Name"), "Select a Document", new { @class = "form-control", @id = "docId", @required = true })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <div class="form-line">
+
+                                        @Html.DropDownList("Organization", new SelectList((IEnumerable<DataField>)ViewBag.Organization, "ID", "Data"), "Select an Organization", new { @class = "form-control", @id = "orgId", @required = true })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <div class="form-line">
+
+                                        @Html.DropDownList("Dist_Center", new SelectList((IEnumerable<DataField>)ViewBag.DCenter, "ID", "Data"), "Select a Dist. Center", new { @class = "form-control", @id = "distId", @required = true })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <div class="form-line">
+
+                                        @Html.DropDownList("Bussiness_Unit", new SelectList((IEnumerable<DataField>)ViewBag.Bussiness, "ID", "Data"), "Select a Bussiness Unit", new { @class = "form-control", @id = "bussId", @required = true })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2">
+                                <div class="form-group">
+                                    <div class="form-line">
+
+                                        @Html.DropDownList("Order_Type", new SelectList((IEnumerable<DataField>)ViewBag.OrderT, "ID", "Data"), "Select an Order Type", new { @class = "form-control", @id = "ordId", @required = true })
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    }
+                </div>
+            </div>
+
+            <div class="col-md-12" id="bodyarea">
+
+                <div class="card">
+                    <div class="header">
+
+
+                    </div>
+                    <div class="body">
+                        <div class="row">
+
+                            <div class="col-md-12">
+
+
+
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+        @section scripts{
+
+            <script src="/Template/plugins/jquery-datatable/jquery.dataTables.js"></script>
+            <script src="/Template/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+            <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+            <script src="/Template/js/pages/forms/basic-form-elements.js"></script>
+            <!--Moment Plugin Js-->
+            <script src="/Template/plugins/momentjs/moment.js"></script>
+            <!-- Bootstrap Material Datetime Picker Plugin Js -->
+            <script src="/Template/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+            <!-- Jquery Validation Plugin Css -->
+            <script src="/Template/plugins/jquery-validation/jquery.validate.js"></script>
+            <!-- Sweet Alert Plugin Js -->
+            <script src="/Template/plugins/sweetalert/sweetalert.min.js"></script>
+
+            <!-- Autosize Plugin Js -->
+            <script src="/Template/plugins/autosize/autosize.js"></script>
+            <!-- Custom Js -->
+            <script src="/Template/js/pages/forms/form-validation.js"></script>
+            <script src="/Template/js/table-edits.js"></script>
+            <script src="/Template/js/pages/tables/jquery-datatable.js"></script>
+            <script src="/Template/js/admin.js"></script>
+            <!-- Demo Js -->
+            <script src="/Template/js/demo.js"></script>
+        }

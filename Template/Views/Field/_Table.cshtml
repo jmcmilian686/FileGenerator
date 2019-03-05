@@ -1,0 +1,80 @@
+﻿@model IEnumerable<FileGenerator.Domain.Entities.Field>
+
+
+
+    <div class="col-md-11 col-xs-12 pull-right">
+        <div class="card">
+            <div class="header">
+                <div class="col-xs-5 pull-left">
+                    <h2>
+                        Fields
+                    </h2>
+                </div>
+                <div class="col-md-1 pull-right" id="btn_plus">
+                    <button type="button" id="btnPlus" class="btn_plus btn btn-success waves-effect pull-right ">
+                        <i class="material-icons">add</i>
+                    </button>
+                </div>
+
+            </div>
+            <div class="body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Id</th>
+                                <th>Field Name</th>
+                                <th>Field Type</th>
+                                <th>Length</th>
+                                <th>Default</th>
+                                <th>Unique?</th>
+                                <th>Field Descript.</th>
+                                <th>Field Hierarchy</th>
+
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            @foreach (var p in Model)
+                            {
+                                <tr>
+                                    <td style="text-align:center;">
+                                        <button type="button" class=" btnDel btn btn-table bg-deep-orange waves-effect">
+                                            <i class="material-icons ">delete</i>
+                                        </button>
+                                        <button type="button" class=" btnEdit btn btn-table btn-success waves-effect">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                    </td>
+                                    <td class="idElem">@p.ID</td>
+                                    <td>@p.Field_Name</td>
+                                    <td>@p.Field_Type</td>
+                                    <td>@p.Length</td>
+                                    <td>@p.DefaultV</td>
+                                     @if(p.UniqueV){
+                                       <td>Yes</td>     
+                                    } else{
+                                        <td>No</td> 
+                                    }
+                                    <td>@p.Field_Desc</td>
+                                    <td>@p.FLevel</td>
+
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+

@@ -1,0 +1,27 @@
+﻿@model IEnumerable<FileGenerator.Domain.Entities.DataField>
+
+
+
+@foreach (var p in Model)
+{
+    <tr>
+        <td style="text-align:center;" class="smallcol">
+           @if (p.Link_S != null) {
+
+            <button type="button" class=" btnLinV btn btn-table bg-deep-orange waves-effect">
+                <i class="material-icons">link</i>
+            </button>
+
+           }
+            <button type="button" class=" btnDelData btn btn-table bg-purple waves-effect">
+                <i class="material-icons">delete</i>
+            </button> 
+
+        </td>
+        <td class="idElem" hidden>@p.ID</td>
+        <td>@p.Data</td>
+       
+
+
+    </tr>
+}

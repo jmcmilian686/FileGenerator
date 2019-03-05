@@ -1,0 +1,36 @@
+﻿
+<div class="modal-dialog " role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+
+
+            @if (ViewBag.Action == "Edited")
+            {
+                <h4>Edite Field</h4>
+            }
+            else
+            {
+                <h4> Create Field </h4>
+            }
+
+
+        </div>
+        <div class="modal-body">
+            <h3>The field has been @ViewBag.Action successfully!</h3>
+
+        </div>
+        <div class="modal-footer">
+
+            <button type="button" id="close1" class="btn bg-red waves-effect" onclick="location.href='@Url.Action("Index", "Fieldstruct")'">
+                <i class="material-icons">clear</i>
+                <span>CLOSE</span>
+            </button>
+
+        </div>
+        <script>
+
+
+        </script>
+    </div>
+</div>
+

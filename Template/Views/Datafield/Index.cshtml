@@ -1,0 +1,187 @@
+﻿@model IEnumerable<FileGenerator.Domain.Entities.Field>
+@{
+    ViewBag.Title = "Index";
+}
+<div class="row" id="tabDetail">
+
+
+        <!--Table Left-->
+
+
+        <div class="col-md-6 col-xs-6 ">
+            <div class="card">
+                <div class="header">
+                    <div class="col-xs-5 pull-left">
+                        <h2>
+                            Fields
+                        </h2>
+                    </div>
+                    <div class="col-md-1 pull-right" id="btn_plus">
+                        <button type="button"  class="btn_plus btn btn-success waves-effect pull-right" onclick="location.href='@Url.Action("Create", "Datafield")'">
+                            <i class="material-icons">add</i>
+                        </button>
+                    </div>
+
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                            <thead>
+                            <th>Action</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Description</th>
+
+
+
+                            </thead>
+                            <tbody>
+
+
+
+                                @foreach (var p in Model)
+                                    {
+                                        <tr>
+                                            <td style="text-align:center;">
+                                        
+                                                <button type="button" class=" btnView btn btn-table btn-primary waves-effect" onclick="location.href='@Url.Action("Index", "Datafield",new { id = p.ID})'">
+                                                    <i class="material-icons">visibility</i>
+                                                </button>
+                                            </td>
+                                            <td class="idElem">@p.ID</td>
+                                            <td>@p.Field_Name</td>
+                                            <td>@p.Field_Desc</td>
+
+
+                                        </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-6 col-xs-6 ">
+            <div class="card">
+                <div class="header">
+                    <div class="col-xs-5 pull-left">
+                        <h2>
+                            Data
+                        </h2>
+                    </div>
+
+
+                </div>
+                <div class="body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-hover ">
+                            <thead>
+                                <tr>
+                                    <th class="col-md-2">Action</th>
+                                    <th>Data</th>
+                                </tr>
+                            
+                            </thead>
+                            <tbody>
+                                @{
+
+                                     Html.RenderAction("Details", new { id = (int)ViewBag.FirstId });
+
+                                }
+
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+        <!--End of Table Left-->
+        <!--Table Right-->
+        <!--End of Table Right-->
+
+
+
+ </div>
+
+
+
+
+<!--Modal Area-->
+<!-- Large Size -->
+<div class="modal fade" id="largeModal" tabindex="-1" role="dialog">
+
+
+
+    @{
+
+        Html.RenderAction("Details",new { id = ViewBag.FirstId });
+
+    }
+
+
+
+</div>
+
+<!--Normal Size-->
+
+<div class="modal fade" id="defaultModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Message</h4>
+            </div>
+            <div class="modal-body" id="updArea">
+                Do you want to delete the selected Item?
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="delFinalData" class="btn bg-red btn-link waves-effect" data-color="red">DELETE</button>
+                <button type="button" id="clModalData" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End Modal Area-->
+
+@section scripts{
+
+    <script src="/Template/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="/Template/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="/Template/js/pages/forms/basic-form-elements.js"></script>
+    <!--Moment Plugin Js-->
+    <script src="/Template/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="/Template/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Jquery Validation Plugin Css -->
+    <script src="/Template/plugins/jquery-validation/jquery.validate.js"></script>
+    <!-- Sweet Alert Plugin Js -->
+    <script src="/Template/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="/Template/plugins/autosize/autosize.js"></script>
+    <!-- Custom Js -->
+    <script src="/Template/js/pages/forms/form-validation.js"></script>
+    <script src="/Template/js/table-edits.js"></script>
+    <script src="/Template/js/pages/tables/jquery-datatable.js"></script>
+    <script src="/Template/js/admin.js"></script>
+    <!-- Demo Js -->
+    <script src="/Template/js/demo.js"></script>
+}
+

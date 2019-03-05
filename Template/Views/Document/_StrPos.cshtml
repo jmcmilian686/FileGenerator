@@ -1,0 +1,74 @@
+﻿@model FileGenerator.Models.AddRowViewModel
+    @using FileGenerator.Domain.Entities
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="form-group">
+            <div class="col-md-4 felem" id="ddlist">
+                <label for="newStruct">Structure</label>
+                @Html.DropDownList("newStruct", new SelectList((IEnumerable<Struct>)ViewBag.FieldName, "ID", "St_Name"), "Select a Structure", new { @class = "form-control", @id = "strId"})
+                @Html.ValidationMessage("strId", "", new { @class = "text-danger" })
+            </div>
+            <div class="col-md-4 felem ">
+                <label for="position">Position</label>
+                <input type="number" id="position" class="form-control">
+                @Html.ValidationMessage("position", "", new { @class = "text-danger" })
+            </div>
+
+            <div class="col-md-2   " id="pbtn">
+                <button id="stPlusBtn" type="button" class="btn bg-green btn-circle waves-effect waves-circle waves-float">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+            
+
+        </div>
+
+    </div>
+    <div class="col-md-12">
+
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped table-hover" id="strTable">
+                <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Order</th>
+                <!-- <th>Action</th>-->
+                </thead>
+                <tbody>
+
+
+
+                    @foreach (var x in Model.StructurePos)
+                     {
+
+
+                                <tr>
+
+                                    <td>@x.ID</td>
+                                    <td>@x.Name</td>
+                                    <td>@x.Description</td>
+                                    <td>@x.Order</td>
+                                            <td class="btns">
+                                        <button type="button" class="btn bg-red btn-circle waves-effect waves-circle waves-float remTab">
+                                            <i class="material-icons">remove</i>
+                                        </button>
+
+                                    </td>
+
+
+
+                                </tr>
+
+                     }
+
+
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>

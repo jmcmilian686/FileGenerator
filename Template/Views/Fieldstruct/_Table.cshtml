@@ -1,0 +1,66 @@
+﻿
+
+<div class="col-md-12 col-xs-12 pull-right">
+    <div class="card">
+        <div class="header">
+            <div class="col-xs-5 pull-left">
+                <h2>
+                    Structs-Fields
+                </h2>
+            </div>
+            <div class="col-md-1 pull-right" id="btn_plus">
+                <button type="button" id="btnPlusSF" class="btn_plus btn btn-success waves-effect pull-right ">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+
+        </div>
+        <div class="body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-hover js-basic-example dataTable">
+                    <thead>
+                    <th>Action</th>
+                    <th>Id</th>
+                    <th>Structure ID</th>
+                    <th>Field ID</th>
+                    <th>Order in Structure</th>
+                    <th>Required?</th>
+
+
+                    </thead>
+                    <tbody>
+                        @foreach (var p in Model)
+                        {
+                            <tr>
+                                <td style="text-align:center;">
+                                    <button type="button" class=" btnDelS btn btn-table bg-deep-orange waves-effect" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">delete</i>
+                                    </button>
+                                    <button type="button" class=" btnEditSF btn btn-table btn-success waves-effect" data-toggle="modal" data-target="#largeModal">
+                                        <i class="material-icons">edit</i>
+                                    </button>
+                                </td>
+                                <td class="idElem">@p.ID</td>
+                                <td>@p.Struct.St_Name</td>
+                                <td>@p.Field.Field_Name</td>
+                                <td>@p.Field_Order</td>
+                                <td>@p.Required</td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+

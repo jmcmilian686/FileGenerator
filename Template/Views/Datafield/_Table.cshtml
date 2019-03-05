@@ -1,0 +1,23 @@
+﻿@model FileGenerator.Models.TableViewModel
+<div class="col-md-12">
+    @if (Model.DataValue != null)
+    {
+
+        foreach (var m in Model.DataValue)
+        {
+
+            <div class="form-group form-float form-insert">
+                <div class="form-line">
+                    @Html.Label(m.Name)
+                    @Html.Editor(m.Name, new { htmlAttributes = new { @class = "form-control elements addData", @placeholder = m.Name, @Value = m.Val } })
+
+
+                </div>
+
+            </div>
+
+        }
+    }
+
+
+</div>

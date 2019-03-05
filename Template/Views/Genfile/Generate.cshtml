@@ -1,0 +1,201 @@
+﻿@model FileGenerator.Models.FileGenViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using FileGenerator.Domain.Entities
+
+<div class="row">
+
+    <div class="col-md-10 col-md-offset-1" id="header">
+        <div class="card">
+
+
+
+            <div class="header">
+                <div class="col-xs-5 pull-left">
+                    <h2>
+                        Generate File
+                    </h2>
+                </div>
+
+
+
+            </div>
+            <div class="body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.Label("Select a Document:")
+                                @Html.DropDownList("Document", new SelectList((IEnumerable<LFile>)ViewBag.Document, "LFile_ID", "Doc_Name"), "Documents", new { @class = "form-control", @id = "docId", @required = true })
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="form-line">
+                                @Html.Label("Output File Name:")
+                                @Html.Editor("FileName", new { htmlAttributes = new { @class = "form-control", @placeholder = "FileName", @id = "FileName" } })
+                                @Html.ValidationMessage("FileName")
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="col-md-5 forms-center">
+
+                        <div class="col-md-8">
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.Label("Number of Files:")
+                                    @Html.Editor("NDocs", new { htmlAttributes = new { @class = "form-control", @placeholder = "Num. of Files", @id = "NumFiles" } })
+                                    @Html.ValidationMessage("NDocs")
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.Label("Batch:")
+                                    @Html.Editor("NBatch", new { htmlAttributes = new { @class = "form-control", @placeholder = "Batch", @id = "NBatch" } })
+                                    @Html.ValidationMessage("NBatch")
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+                                    @Html.Label("Number of Details:")
+                                    @Html.Editor("NDets", new { htmlAttributes = new { @class = "form-control", @placeholder = "Num. of Details", @id = "NumDetail" } })
+                                    @Html.ValidationMessage("NDets")
+                                </div>
+
+
+                            </div>
+                            <div class="form-group">
+                                <div class="form-line">
+
+
+                                    <input name="Multiple" id="Multiple" type="checkbox"  data-val-required="The field is required."  class="form-control "><label for="Multiple">Variable?</label>
+                                    <input name="Multiple" type="hidden" value="false">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-3">
+                        
+                        <div class="col-md-12">
+                            <button type="button" class="btn bg-pink waves-effect btn_gen" id="customize">
+                                <i class="material-icons">extension</i>
+                                <span>Customize</span>
+                            </button>
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<!--Normal Size-->
+
+<div class="modal fade" id="genFileModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="defaultModalLabel">Customize</h4>
+            </div>
+            <div class="modal-body" id="GenFupdArea">
+               <div class="row">
+                   <div class="col-md-8">
+
+                       <div class="form-group">
+                           <div class="form-line">
+
+                               @Html.DropDownList("Fields", new SelectList((IEnumerable<Field>)ViewBag.Items, "ID", "Field_Name"), "Select a Field", new { @class = "form-control", @id = "fieldId" })
+
+                           </div>
+                       </div>
+
+                   </div>
+
+                   <div class="col-md-4">
+
+                       
+                           <button type="button" class="btn bg-green btn-circle-lg waves-effect waves-circle waves-float pull-right" id="addCustomize">
+                               <i class="material-icons">add</i>
+                           </button>
+
+                       
+                   </div>
+
+               </div> 
+                <hr />
+                <div class="row">
+                    <div class="col-md-12" id="GenFilePar">
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="GenFileSave" class="btn btn-success btn-link waves-effect" httpad ="@Url.Action("Generate", "Genfile")">GENERATE</button>
+                <button type="button" id="clModalGen" class="btn btn-link waves-effect" data-dismiss="modal">CLOSE</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--End Modal Area-->
+
+@section scripts{
+
+    <script src="/Template/plugins/jquery-datatable/jquery.dataTables.js"></script>
+    <script src="/Template/plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/dataTables.buttons.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.flash.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/jszip.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/pdfmake.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/vfs_fonts.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.html5.min.js"></script>
+    <script src="/Template/plugins/jquery-datatable/extensions/export/buttons.print.min.js"></script>
+    <script src="/Template/js/pages/forms/basic-form-elements.js"></script>
+    <!--Moment Plugin Js-->
+    <script src="/Template/plugins/momentjs/moment.js"></script>
+    <!-- Bootstrap Material Datetime Picker Plugin Js -->
+    <script src="/Template/plugins/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js"></script>
+    <!-- Jquery Validation Plugin Css -->
+    <script src="/Template/plugins/jquery-validation/jquery.validate.js"></script>
+    <!-- Sweet Alert Plugin Js -->
+    <script src="/Template/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <!-- Autosize Plugin Js -->
+    <script src="/Template/plugins/autosize/autosize.js"></script>
+    <!-- Custom Js -->
+    <script src="/Template/js/pages/forms/form-validation.js"></script>
+    <script src="/Template/js/table-edits.js"></script>
+    <script src="/Template/js/pages/tables/jquery-datatable.js"></script>
+    <script src="/Template/js/admin.js"></script>
+    <!-- Demo Js -->
+    <script src="/Template/js/demo.js"></script>
+}
